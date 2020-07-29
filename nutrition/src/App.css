@@ -1,0 +1,11 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+
+.App{
+  background-image:linear-gradient(to right bottom, #00afff, #88bfff, #bed1ff, #e4e7ff, #ffffff);
+  height:100vh;
+}
