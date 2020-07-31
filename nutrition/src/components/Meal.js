@@ -27,6 +27,11 @@ const Meal = ({meal}) => {
         height:"100%",
     }
 
+    const buttonRowStyle={
+        background:"#99CCFF",
+        
+    }
+
     return ( 
 
         
@@ -38,8 +43,8 @@ const Meal = ({meal}) => {
 
                 </div>
             </div>
-            <div className="row">
-                <div className="add-button">
+            <div className="row" style={buttonRowStyle}>
+                <div className="add-button" >
                     <button className="btn btn-secondary " style={buttonStyle}>Add Food +</button>
                 </div>
             </div>
