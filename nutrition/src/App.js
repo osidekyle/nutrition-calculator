@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./components/Header"
+import Meals from "./components/Meals"
 import './App.css';
 import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
@@ -20,7 +21,7 @@ function App() {
 
     <div className="row">
      
-
+    <Meals/>
     </div>
 
       </div>
