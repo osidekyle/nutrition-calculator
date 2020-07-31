@@ -21,7 +21,7 @@ function App() {
 
     <div className="row">
      
-    <Meals/>
+    <Meals />
     </div>
 
       </div>
