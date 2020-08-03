@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
 import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
+import axios from "../../../node_modules/axios/dist/axios"
+import Food from "./Food"
 
 const Meal = ({meal}) => {
     const foodBoxStyle={
@@ -31,16 +33,29 @@ const Meal = ({meal}) => {
         background:"#99CCFF",
         
     }
+    const [foods, getFood]=useState([]);
+    const[showSearch, getShowSearch]=useState(false);
+    const[didInput, getInput]=useState(false);
+    const[foodInput, addInput]=useState()
 
     const toSearchAddFood=(e)=>{
-
+        
         //If there is input and we are on the search bar
-        if(didInput==true && showSearch==true){
+        if(didInput==true && showSearch==true ){
             //Searching
             console.log("searched")
-            getFood(foodInput);    
-        }
-
+            const headers= {
+                'x-app-id': '8db6ff6d',
+                 'x-app-key': '4449c0db25170f2c84ad45e70368b39c',
+                  }
+            const apiEndpoint = `https://trackapi.nutritionix.com/v2/natural/nutrients`;
+            const params = { query: `${foodInput}` };
+            const response=axios.post(apiEndpoint, params, {headers})
+            .then(response=>response.data.foods[0])
+            .then(response=>getFood([response]))
+                    
+                }
+            console.log(foods)
         //Changes from search to button and vice versa
         showSearch ? getShowSearch(false) : getShowSearch(true);
         console.log("Switched")
@@ -54,12 +69,13 @@ const Meal = ({meal}) => {
     }
 
     const changeInput=(e)=>{
-        if (e.target.value){
+        if (e.target.value && e.target.value.trim()){
             console.log("There is something in the search")
             getInput(true);
             addInput(e.target.value)
+            
         }
-        else if (e.target.value==null || e.target.value==""){
+        else if (e.target.value==null || e.target.value=="" || !e.target.value.trim()){
             console.log("Nothing in the search")
             getInput(false)
             addInput("");
@@ -67,10 +83,7 @@ const Meal = ({meal}) => {
 
     }
 
-    const [foods, getFood]=useState([]);
-    const[showSearch, getShowSearch]=useState(false);
-    const[didInput, getInput]=useState(false);
-    const[foodInput, addInput]=useState()
+    
 
     return ( 
 
@@ -80,7 +93,10 @@ const Meal = ({meal}) => {
             <div className="row"><h4 className="meal-title display-4" style={titleStyle}>{meal}</h4></div>
             <div className='row'>
                 <div className="food-items" style={itemsStyle}>
-
+                    {/*foods.map((food)=>(
+                        <Food name={food.name} serving={food.servingSize} calories={food.calories}/>
+                    
+                    ))*/}
                 </div>
             </div>
             <div className="row" style={buttonRowStyle}>
