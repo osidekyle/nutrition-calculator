@@ -1,14 +1,12 @@
 import React from 'react';
+import Item from "./Item"
 
 
-
-const Food = ({food,serving,calories}) => {
+const Food = ({foods}) => {
     return (
-        <div className="food-item">
-            <h4>{food}</h4>
-            <h4>{serving}</h4>
-            <h4>{calories}</h4>
-        </div>
+        {foods.map(item=>(
+            <Item food={item}/>
+        ))} 
       );
 }
  
