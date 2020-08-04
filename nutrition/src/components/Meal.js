@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import axios from "../../../node_modules/axios/dist/axios"
-
+import Food from "./Food"
 
 const Meal = ({meal}) => {
     const foodBoxStyle={
@@ -20,7 +20,7 @@ const Meal = ({meal}) => {
     const itemsStyle={
         width:"100%",
         borderBottom:"solid 1px black",
-        height:"0px"
+        height:"100%"
     }
 
     const buttonStyle={
@@ -38,6 +38,8 @@ const Meal = ({meal}) => {
     const [didInput, getInput]=useState(false);
     const [foodInput, addInput]=useState("")
     const [query,getQuery]=useState([]);
+
+    var stuff=['apple','bread'];
 
     const toSearchAddFood=(e)=>{
         
@@ -78,9 +80,9 @@ const Meal = ({meal}) => {
 
     
        
-    
+    /*
     useEffect(()=>{
-       
+         
         const response=null;
         const fetchFood=async (food)=>{
             const headers= {
@@ -98,12 +100,15 @@ const Meal = ({meal}) => {
               }
            if(foods!=""){
             fetchFood(foods)
+            
             getFood("")
-           } 
+           }
+           
+          
     },[foods])
 
     
-
+    */
 
     return ( 
 
@@ -113,7 +118,9 @@ const Meal = ({meal}) => {
             <div className="row"><h4 className="meal-title display-4" style={titleStyle}>{meal}</h4></div>
             <div className='row'>
                 <div className="food-items" style={itemsStyle}>
-                
+                    {['bread','apple'].map(item=>(
+                        <Food food={item}/>
+                    ))} 
                 </div>
             </div>
             <div className="row" style={buttonRowStyle}>

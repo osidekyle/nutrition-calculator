@@ -1,12 +1,12 @@
 import React from 'react';
-import Item from "./Item"
 
 
-const Food = ({foods}) => {
+
+const Food = ({food}) => {
     return (
-        {foods.map(item=>(
-            <Item food={item}/>
-        ))} 
+        
+        <h4>{food}</h4>
+        
       );
 }
  
