@@ -20,7 +20,7 @@ const Meal = ({meal}) => {
     const itemsStyle={
         width:"100%",
         borderBottom:"solid 1px black",
-        height:"100%"
+        height:"0%"
     }
 
     const buttonStyle={
