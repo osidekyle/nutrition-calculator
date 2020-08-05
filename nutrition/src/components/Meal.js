@@ -37,9 +37,8 @@ const Meal = ({meal}) => {
     const [showSearch, getShowSearch]=useState(false);
     const [didInput, getInput]=useState(false);
     const [foodInput, addInput]=useState("")
-    const [query,getQuery]=useState([]);
+    const [Query,addQuery]=useState([]);
 
-    var stuff=['apple','bread'];
 
     const toSearchAddFood=(e)=>{
         
@@ -80,11 +79,12 @@ const Meal = ({meal}) => {
 
     
        
-    /*
+    
     useEffect(()=>{
          
-        const response=null;
+        let id=0;
         const fetchFood=async (food)=>{
+            let response=null;
             const headers= {
                 'x-app-id': '8db6ff6d',
                  'x-app-key': '4449c0db25170f2c84ad45e70368b39c',
@@ -93,11 +93,15 @@ const Meal = ({meal}) => {
             const params = { query: food };
 
             await axios.post(apiEndpoint, params, {headers})
-            .then(res=>{if(res.ok){response=res}})
+            .then(res=>{addQuery(Query=>[...Query,res])})
             .catch(err=>console.log(err))
             
-          //  getQuery([...query,response.data.food[0]])
+            
+            
+            
               }
+
+              
            if(foods!=""){
             fetchFood(foods)
             
@@ -107,8 +111,8 @@ const Meal = ({meal}) => {
           
     },[foods])
 
+  
     
-    */
 
     return ( 
 
@@ -118,8 +122,9 @@ const Meal = ({meal}) => {
             <div className="row"><h4 className="meal-title display-4" style={titleStyle}>{meal}</h4></div>
             <div className='row'>
                 <div className="food-items" style={itemsStyle}>
-                    {['bread','apple'].map(item=>(
-                        <Food food={item}/>
+                    {Query.map(item=>(
+                        
+                        <Food name={item.data.foods[0].food_name} calories={item.data.foods[0].nf_calories} serving={item.data.foods[0].serving_unit} />
                     ))} 
                 </div>
             </div>
