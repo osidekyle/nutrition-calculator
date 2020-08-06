@@ -7,7 +7,8 @@ const Meal = ({meal}) => {
     const foodBoxStyle={
             background:"white",
             border:"solid 1px black",
-            borderRadius:"10px"
+            borderRadius:"10px",
+            width:"60%"
     }
 
 
@@ -111,7 +112,7 @@ const Meal = ({meal}) => {
 
   
     const deleteFood = (name)=>{
-        console.log(name)
+        console.log(name    )
         addQuery(Query.filter(item=>item.data.foods[0].food_name!==name))
     }
     

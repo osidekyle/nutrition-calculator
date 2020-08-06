@@ -5,10 +5,10 @@ const Header = () => {
 
     const headingStyle={
         padding:"5%",
-        borderRadius:"25%",
+        borderRadius:"50px",
         boxShadow:"0px 5px 20px black",
-        width:"50%",
-        height:"75px",
+        width:"40%",
+        height:"50px",
         margin:"auto",
         paddingBottom:"9%",
         background:"white"
@@ -16,7 +16,7 @@ const Header = () => {
 
     const titleStyle={
         textAlign:"center",
-        fontSize:"300%"
+        fontSize:"250%"
     }
 
     return (
