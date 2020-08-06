@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 
 
-const Food = ({name, calories, serving,remove}) => {
+const Food = ({deleteFood, name, calories, serving,remove}) => {
    const [count, addCount]=useState(1);
    
 const more=()=>{
@@ -20,7 +20,7 @@ const itemStyle={
 }
     return (
      <div style={itemStyle}>
-        {name} | Calories:{calories*count} | Quantity:{count} | Serving Size: {serving} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | 
+        {name} | Calories:{calories*count} | Quantity:{count} | Serving Size: {serving} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | <span onClick={()=>deleteFood(name)}>Delete</span>
         </div>
       );
 }

@@ -82,7 +82,7 @@ const Meal = ({meal}) => {
     
     useEffect(()=>{
          
-        let id=0;
+        
         const fetchFood=async (food)=>{
             let response=null;
             const headers= {
@@ -93,13 +93,11 @@ const Meal = ({meal}) => {
             const params = { query: food };
 
             await axios.post(apiEndpoint, params, {headers})
+            //.then(res=>console.log(res))
             .then(res=>{addQuery(Query=>[...Query,res])})
             .catch(err=>console.log(err))
             
-            
-            
-            
-              }
+                }
 
               
            if(foods!=""){
@@ -112,6 +110,10 @@ const Meal = ({meal}) => {
     },[foods])
 
   
+    const deleteFood = (name)=>{
+        console.log(name)
+        addQuery(Query.filter(item=>item.data.foods[0].food_name!==name))
+    }
     
 
     return ( 
@@ -124,7 +126,7 @@ const Meal = ({meal}) => {
                 <div className="food-items" style={itemsStyle}>
                     {Query.map(item=>(
                         
-                        <Food name={item.data.foods[0].food_name} calories={item.data.foods[0].nf_calories} serving={item.data.foods[0].serving_unit} />
+                        <Food deleteFood={deleteFood} name={item.data.foods[0].food_name}  calories={item.data.foods[0].nf_calories} serving={item.data.foods[0].serving_unit} />
                     ))} 
                 </div>
             </div>
