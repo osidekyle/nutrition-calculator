@@ -20,7 +20,7 @@ const itemStyle={
 }
     return (
      <div style={itemStyle}>
-        {name} | Calories:{calories*count} | Quantity:{count} | Serving Size: {serving} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | <span onClick={()=>deleteFood(name)}>Delete</span>
+        {name.charAt(0).toUpperCase()+name.slice(1)} | Calories:{Math.floor((calories*count))} | Quantity:{count} | Serving Size: {serving} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | <span onClick={()=>deleteFood(name)}>Delete</span>
         </div>
       );
 }
