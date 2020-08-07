@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Header from "./components/Header"
 import Meals from "./components/Meals"
 import './App.css';
@@ -7,11 +7,27 @@ import Summary from "./components/Summary"
 
 function App() {
 
+  const[names,addName]=useState([])
   const [foods, addFood]=useState([]);
     const moreFood=(food)=>{
+      
       addFood(foods=>[...foods,food])
+      
     }
 
+    const lessFood=(name)=>{
+
+      addName(names=>[...names,name])
+      
+    }
+     
+    const emptyNames=()=>{
+      addName([])
+    }
+
+    const setFoods=(foods)=>{
+      addFood(foods)
+    }
   
 
   return (
@@ -25,10 +41,10 @@ function App() {
 
     <div className="row">
      
-    <Meals moreFood={moreFood} />
+    <Meals lessFood={lessFood} moreFood={moreFood} />
     </div>
     <div className="row">
-      <Summary foods={foods}/>
+      <Summary setFoods={setFoods} emptyNames={emptyNames} names={names} foods={foods}/>
     </div>
       </div>
     </div>

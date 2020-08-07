@@ -1,9 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useRef} from 'react';
 import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import axios from "../../../node_modules/axios/dist/axios"
 import Food from "./Food"
 
-const Meal = ({moreFood, meal}) => {
+const Meal = ({lessFood, moreFood, meal}) => {
     const foodBoxStyle={
             background:"white",
             border:"solid 1px black",
@@ -32,14 +32,23 @@ const Meal = ({moreFood, meal}) => {
 
     const buttonRowStyle={
         background:"#99CCFF",
-        
+        border:"solid 1.5px #99CCFF",
+        borderRadius:"0px 0px 8px 8px"
     }
+
+    const searchStyle={
+        width:"80%",
+        borderRadius:"5px",
+        marginTop:"1%"
+    }
+
     const [foods, getFood]=useState("");
     const [showSearch, getShowSearch]=useState(false);
     const [didInput, getInput]=useState(false);
     const [foodInput, addInput]=useState("")
     const [Query,addQuery]=useState([]);
      
+    const search = useRef(null);
 
     const toSearchAddFood=(e)=>{
         
@@ -51,6 +60,11 @@ const Meal = ({moreFood, meal}) => {
             
 
         } 
+
+       /* if(showSearch===false){
+            search.focus();
+        }
+        */
         //Changes from search to button and vice versa
         showSearch ? getShowSearch(false) : getShowSearch(true);
         console.log("Switched")
@@ -112,8 +126,9 @@ const Meal = ({moreFood, meal}) => {
 
   
     const deleteFood = (name)=>{
-        console.log(name    )
+        
         addQuery(Query.filter(item=>item.data.foods[0].food_name!==name))
+        
     }
     
 
@@ -127,7 +142,7 @@ const Meal = ({moreFood, meal}) => {
                 <div className="food-items" style={itemsStyle}>
                     {Query.map(item=>(
                         
-                        <Food deleteFood={deleteFood} food={item}/>
+                        <Food lessFood={lessFood} deleteFood={deleteFood} food={item}/>
                     ))} 
                 </div>
             </div>
@@ -136,7 +151,7 @@ const Meal = ({moreFood, meal}) => {
                     {showSearch ? null : <button className="btn btn-secondary" onClick={toSearchAddFood} style={buttonStyle}>Add Food +</button>}
                 </div>
                 <div className="search-bar">
-                {showSearch ? <React.Fragment><input onChange={changeInput} type="text"></input><button onClick={toSearchAddFood}>Add</button></React.Fragment> : null}
+                {showSearch ? <React.Fragment><input ref={search} style={searchStyle} onChange={changeInput} type="text"></input><button className="btn btn-sm mb-1 btn-primary" onClick={toSearchAddFood}>Add</button></React.Fragment> : null}
                     
                 </div>
             </div>
