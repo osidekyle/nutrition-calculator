@@ -1,6 +1,6 @@
 import React from 'react';
 import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
-
+import "../App.css"
 const Header = () => {
 
     const headingStyle={
@@ -8,23 +8,26 @@ const Header = () => {
         borderRadius:"50px",
         boxShadow:"0px 5px 20px black",
         width:"40%",
-        height:"50px",
+        height:"40px",
         margin:"auto",
         paddingBottom:"9%",
         background:"white"
       }
 
-    const titleStyle={
-        textAlign:"center",
-        fontSize:"200%"
-        
+  
+
+    const rowStyle={
+        width:"100%"
     }
 
     return (
         //Put in container
-        <div className="heading mt-3 col-xs-12" style={headingStyle}>
-        <h1 className="Display1" style={titleStyle}> Nutrition Tracker</h1>
+        <div className="row" style={rowStyle}>
+        <div className="col-xs-12 mt-4" style={headingStyle}>
+        <h1 className="display-4 title"> Nutrition Tracker</h1>
         </div> 
+        </div>
+        
      );
 }
  

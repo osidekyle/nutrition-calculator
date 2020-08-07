@@ -55,7 +55,7 @@ const Summary = ({setFoods, emptyNames, names, foods}) => {
         margin:"auto"
     }
 
-    return (<div style={summaryStyle} className="mt-5">
+    return (<div style={summaryStyle} className="mt-5 mb-5">
             <div className="column">
              <h1 className="display-4">Summary</h1>
              <div className="mt-4">
