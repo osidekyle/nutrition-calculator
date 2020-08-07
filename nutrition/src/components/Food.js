@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 
 
-const Food = ({deleteFood, name, calories, serving,remove}) => {
+const Food = ({deleteFood, food}) => {
    const [count, addCount]=useState(1);
    
 const more=()=>{
@@ -18,9 +18,17 @@ const less=()=>{
 const itemStyle={
     borderBottom:"solid 1px black"
 }
+
+const deleteStyle={
+    background:"coral",
+    borderRadius:"20px",
+    padding:".15%",
+    cursor:"pointer"
+  
+}
     return (
      <div style={itemStyle}>
-        {name.charAt(0).toUpperCase()+name.slice(1)} | Calories:{Math.floor((calories*count))} | Quantity:{count} | Serving Size: {serving} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | <span onClick={()=>deleteFood(name)}>Delete</span>
+        <strong>{food.data.foods[0].food_name.charAt(0).toUpperCase()+food.data.foods[0].food_name.slice(1)}</strong> | Calories:{Math.floor(food.data.foods[0].nf_calories*count)} | Protein:{Math.floor(food.data.foods[0].nf_protein*count)} | Quantity:{count} | Serving Size: {food.data.foods[0].serving_unit} | <span onClick={()=>more()}>+</span> | <span onClick={()=>less()}>-</span> | <span style={deleteStyle} onClick={()=>deleteFood(food.data.foods[0].food_name)}>Delete</span>
         </div>
       );
 }

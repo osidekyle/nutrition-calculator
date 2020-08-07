@@ -3,7 +3,7 @@ import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import axios from "../../../node_modules/axios/dist/axios"
 import Food from "./Food"
 
-const Meal = ({meal}) => {
+const Meal = ({moreFood, meal}) => {
     const foodBoxStyle={
             background:"white",
             border:"solid 1px black",
@@ -39,7 +39,7 @@ const Meal = ({meal}) => {
     const [didInput, getInput]=useState(false);
     const [foodInput, addInput]=useState("")
     const [Query,addQuery]=useState([]);
-
+     
 
     const toSearchAddFood=(e)=>{
         
@@ -85,7 +85,7 @@ const Meal = ({meal}) => {
          
         
         const fetchFood=async (food)=>{
-            let response=null;
+           
             const headers= {
                 'x-app-id': '8db6ff6d',
                  'x-app-key': '4449c0db25170f2c84ad45e70368b39c',
@@ -95,7 +95,7 @@ const Meal = ({meal}) => {
 
             await axios.post(apiEndpoint, params, {headers})
             //.then(res=>console.log(res))
-            .then(res=>{addQuery(Query=>[...Query,res])})
+            .then(res=>{addQuery(Query=>[...Query,res]); moreFood(res)})
             .catch(err=>console.log(err))
             
                 }
@@ -127,7 +127,7 @@ const Meal = ({meal}) => {
                 <div className="food-items" style={itemsStyle}>
                     {Query.map(item=>(
                         
-                        <Food deleteFood={deleteFood} name={item.data.foods[0].food_name}  calories={item.data.foods[0].nf_calories} serving={item.data.foods[0].serving_unit} />
+                        <Food deleteFood={deleteFood} food={item}/>
                     ))} 
                 </div>
             </div>

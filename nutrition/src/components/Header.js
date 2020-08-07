@@ -16,7 +16,8 @@ const Header = () => {
 
     const titleStyle={
         textAlign:"center",
-        fontSize:"250%"
+        fontSize:"200%"
+        
     }
 
     return (
