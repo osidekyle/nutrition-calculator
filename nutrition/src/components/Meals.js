@@ -1,19 +1,25 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Meal from "./Meal"
 import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 
-const Meals = ({ lessFood, moreFood}) => {
+const Meals = ({}) => {
 
-    
+
+
+  
+
+  
+
 
     return ( 
         <div className="container meals mt-5">
-            <div className="column">
-            <Meal lessFood={lessFood} moreFood={moreFood} meal="Breakfast"/>
-                <Meal lessFood={lessFood}  moreFood={moreFood} meal="Lunch"/>
-                <Meal lessFood={lessFood} moreFood={moreFood} meal="Dinner"/>
-                <Meal lessFood={lessFood} moreFood={moreFood} meal="Snack"/>
+            <div className="column mb-5">
+            <Meal  meal="Breakfast"/>
+            <Meal  meal="Lunch"/>
+            <Meal  meal="Dinner"/>
+            <Meal  meal="Snack"/>
+               
             </div>
         </div>
      );

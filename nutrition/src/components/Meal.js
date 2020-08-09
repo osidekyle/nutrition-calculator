@@ -3,7 +3,7 @@ import bootstrap from "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import axios from "../../../node_modules/axios/dist/axios"
 import Food from "./Food"
 
-const Meal = ({lessFood, moreFood, meal}) => {
+const Meal = ({meal}) => {
     const foodBoxStyle={
             background:"white",
             border:"solid 1px black",
@@ -65,6 +65,8 @@ const Meal = ({lessFood, moreFood, meal}) => {
             search.focus();
         }
         */
+
+
         //Changes from search to button and vice versa
         showSearch ? getShowSearch(false) : getShowSearch(true);
         console.log("Switched")
@@ -109,7 +111,7 @@ const Meal = ({lessFood, moreFood, meal}) => {
 
             await axios.post(apiEndpoint, params, {headers})
             //.then(res=>console.log(res))
-            .then(res=>{addQuery(Query=>[...Query,res]); moreFood(res)})
+            .then(res=>{addQuery(Query=>[...Query,res])})
             .catch(err=>console.log(err))
             
                 }
@@ -120,6 +122,7 @@ const Meal = ({lessFood, moreFood, meal}) => {
             
             getFood("")
            }
+           
            
           
     },[foods])
@@ -142,7 +145,7 @@ const Meal = ({lessFood, moreFood, meal}) => {
                 <div className="food-items" style={itemsStyle}>
                     {Query.map(item=>(
                         
-                        <Food lessFood={lessFood} deleteFood={deleteFood} food={item}/>
+                        <Food deleteFood={deleteFood} food={item}/>
                     ))} 
                 </div>
             </div>

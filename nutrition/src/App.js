@@ -7,28 +7,15 @@ import Summary from "./components/Summary"
 
 function App() {
 
-  const[names,addName]=useState([])
-  const [foods, addFood]=useState([]);
-    const moreFood=(food)=>{
-      
-      addFood(foods=>[...foods,food])
-      
-    }
 
-    const lessFood=(name)=>{
-
-      addName(names=>[...names,name])
-      
-    }
-     
-    const emptyNames=()=>{
-      addName([])
-    }
-
-    const setFoods=(foods)=>{
-      addFood(foods)
-    }
   
+ 
+    
+   
+     
+    
+    
+    
 
   return (
     <div className="App">
@@ -40,12 +27,9 @@ function App() {
       </div>
 
     <div className="row">
-     
-    <Meals lessFood={lessFood} moreFood={moreFood} />
+    <Meals/>
     </div>
-    <div className="row">
-      <Summary setFoods={setFoods} emptyNames={emptyNames} names={names} foods={foods}/>
-    </div>
+    
       </div>
     </div>
   );
